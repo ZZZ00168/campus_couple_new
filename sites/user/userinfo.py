@@ -109,6 +109,10 @@ class SetUserInfo:
                 (not re.compile(r'[0-9]{4}-[0-9]{2}-[0-9]{2}').match(input.birthday))):
             return output(113)
 
+	if input.nickname != None:
+		if 1>=len(input.nickname) or len(input.nickname)>=8:
+			return output(114)
+
         db = getDb()
 
         if len(db.select('token', vars={'token': input.access_token, 'id': input.user_id},
