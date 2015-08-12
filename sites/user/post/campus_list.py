@@ -17,7 +17,7 @@ from encrypt import *
 from verify import *
 
 
-@route.route('/user/post/campus/l')
+@route.route('/user/post/campus/list')
 class UserPostCampusList:  # 查询校区文章更新情况
     def POST(self):  # 传入access_token,user_id,start_poost_id,start_index,end_index
         input = web.input(access_token=None, user_id=None, start_post_id=None, start_index=None, post_count=None)
