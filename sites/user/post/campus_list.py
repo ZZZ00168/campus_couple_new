@@ -20,20 +20,20 @@ from verify import *
 @route.route('/user/post/campus/list')
 class UserPostCampusList:  # 查询校区文章更新情况
     def POST(self):  # 传入access_token,user_id,start_poost_id,start_index,end_index
-        input = web.input(access_token=None, user_id=None, start_post_id=None, start_index=None, end_index=None, )
+        input = web.input(access_token=None, user_id=None, start_post_id=None, start_index=None, post_count=None, )
 
         # 缺少必填参数
-        if input.access_token == None or input.user_id == None or input.start_post_id == None or input.start_index == None or input.end_index == None:
-            return output(110, False)
+        if input.access_token == None or input.user_id == None or input.start_post_id == None or input.start_index == None or input.post_count == None:
+            return output(110)
         try:
             input.user_id = int(input.user_id)
             input.start_post_id = int(input.start_post_id)
             input.start_index = int(input.start_index)
-            input.end_index = int(input.end_index)
-            if input.start_index < 0 or input.start_index > input.end_index:  # 参数值非法
-                return output(112, False)
+            input.post_count = int(input.post_count)
+            if input.start_index <= 0 or input.post_count <= 0 or input.start_post_id < 0:  # 参数值非法
+                return output(112)
         except:
-            return output(111, False)
+            return output(111)
 
         try:
             db = getDb()
@@ -41,27 +41,32 @@ class UserPostCampusList:  # 查询校区文章更新情况
                                 where="user_id=$user_id and access_token=$access_token")
             # access_token权限不足
             if len(results) != 1:
-                return output(410, False)
+                return output(410)
 
             # 查询是否存在start_post_id
             post_ids = db.select('post', vars={'post_id': input.start_post_id},
                                  where='post_id=$post_id', what='post_id')
             if len(post_ids) != 1:
-                return output(467, False)  # start_post_id不存在
+                return output(467)  # start_post_id不存在
 
             json_data = []
             # 先定义json中data的post_list
             post_list = []
             is_more = False
 
+	    if input.start_post_id == 0:
+	    	results = db.select('post', vars=
+
+
             # start_post_id_index = input.start_post_id - input.start_index
             # end_post_id_index = input.start_post_id - input.end_index-1
-            post_id_number = input.end_index - input.start_index + 2  # 为了判断是否又更多post而设计,如果还有post的话，则is_more=True
-            results = db.select('post', vars={ 'post_id': input.start_post_id,
-                                                     "post_id_number": post_id_number},
-                                where="post_id>$post_id",
+            post_id_number = input.post_count  + 1  # 为了判断是否又更多post而设计,如果还有post的话，则is_more=True
+            results = db.select('post', vars={'post_id': input.start_post_id,
+                                              "post_id_number": post_id_number,
+						"start_limit":input.start_index},
+                                where="post_id<=$post_id",
                                 what='user_id as post_user_id,add_time,content,post_id', order='post_id desc',
-                                limit="$post_id_number")
+                                limit="$start_limit,$post_id_number")
             post_count_number = len(results)
             if post_count_number == post_id_number:
                 is_more = True  # 判断时候有更多
@@ -130,4 +135,4 @@ class UserPostCampusList:  # 查询校区文章更新情况
             return output(200, json_data)
 
         except:
-            return output(700, False)
+            return output(700)
