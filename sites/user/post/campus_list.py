@@ -89,7 +89,7 @@ class UserPostCampusList:  # 查询校区文章更新情况
                     post_list.append({'user_id':i.user_id, 'post_id':i.post_id, 'add_time':i.add_time,
                             'content':i.content, 'img_url':i.img_url,
                             'thumbnail_img_url':i.thumbnail_img_url})
-                post_count = len(results)
+                post_count = len(post_list)
 
                 if post_count == post_number:
                     post_count = post_number - 1
@@ -109,7 +109,7 @@ class UserPostCampusList:  # 查询校区文章更新情况
                     post_list.append({'user_id':i.user_id, 'post_id':i.post_id, 'add_time':i.add_time,
                             'content':i.content, 'img_url':i.img_url,
                             'thumbnail_img_url':i.thumbnail_img_url})
-                post_count = len(results)
+                post_count = len(post_list)
 
                 if post_count == 11:
                     post_count = 10
