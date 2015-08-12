@@ -71,7 +71,7 @@ class UserPostCampusList:  # 查询校区文章更新情况
             post_number = input.post_count + 1
 
             what = "post.post_id as post_id, post.add_time as add_time, post.user_id as user_id, "
-            what += "post.content as content post.img_url as img_url, "
+            what += "post.content as content, post.img_url as img_url, "
             what += "post.thumbnail_img_url as thumbnail_img_url"
 
             if input.start_post_id != 0:
