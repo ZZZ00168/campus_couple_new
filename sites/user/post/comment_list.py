@@ -24,28 +24,27 @@ class UserPostCommentList:  # 返回某文章的评论列表
 
         # 缺少必填参数
         if input.access_token == None or input.user_id == None or input.post_id == None:
-            return output(110, False)
+            return output(110)
 
         try:
             input.user_id = int(input.user_id)
             input.post_id = int(input.post_id)
         except:
-            return output(111, False)
+            return output(111)
+
         try:
             db = getDb()
-            results = db.select('token', vars={'user_id': input.user_id, 'access_token': input.access_token},
+            results = db.select('token', vars={'user_id': input.user_id,
+                                               'access_token': input.access_token},
                                 where="user_id=$user_id and access_token=$access_token")
             # access_token权限不足
             if len(results) != 1:
-                return output(410, False)
+                return output(410)
 
-            user_id = results[0].user_id
+            if len(db.select('post', vars = {'id':input.post_id}, where = "post_id=$id")) == 0:
+                return output(467)
 
             results = db.select('comments', vars={'post_id': input.post_id}, where="post_id=$post_id")
-
-            # post_id不存在
-            if len(results) != 1:
-                return output(467, False)
 
             comment_list = []
             # 整体放入try里面，防止系统崩
@@ -60,14 +59,11 @@ class UserPostCommentList:  # 返回某文章的评论列表
                 # 显然这儿是两条记录，一条nickname，一条birthday，故用try包围。
                 # 目的是防止查表两次，这样的话查表一次就行。
                 for j in user_commenter:
-                    try:
-                        user_nickname = j.nickname
-                    except:
-                        pass
-                    try:
-                        user_img_url = j.img_url
-                    except:
-                        pass
+                    if j.type == 'nickname':
+                        user_nickname = j.information
+                    elif j.type == 'img_url':
+                        user_img_url = j.information
+
                 user_mobile = '1234'
                 if user_nickname == None:  # 加上他的电话后四位。
                     user_mobile = db.select('user', vars={'user_id': i.user_id}, where='user_id=$user_id',
@@ -77,14 +73,25 @@ class UserPostCommentList:  # 返回某文章的评论列表
                     try:
                         user_mobile = str(user_mobile[0].mobile)[-4:]
                     except:
-                        return output(700, False)
-                    user_nickname = '用户' + str(user_mobile)
+                        return output(700)
+                    user_nickname = u'用户' + str(user_mobile)
+
+                commented_name = None
+                if i.commented_id != 0:
+                    user_mobile = db.select('user', vars={'user_id': i.commented_id}, where='user_id=$user_id',
+                                            what='mobile')
+                    try:
+                        user_mobile = str(user_mobile[0].mobile)[-4:]
+                    except:
+                        return output(700)
+                    commented_name = u'用户' + str(user_mobile)
 
                 # 最后添加进评论列表中
                 comment_list.append({"comment_id": i.comment_id, "user_id": i.user_id,
+                                     'user_name': user_nickname,
                                      'user_img_url': user_img_url,
                                      'add_time': str(i.add_time), 'content': i.content,
-                                     "commented": user_nickname})
+                                     "commented_name": commented_name})
             return output(200, comment_list)
         except:
-            return output(700, False)
+            return output(700)
