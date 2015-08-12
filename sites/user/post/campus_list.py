@@ -36,7 +36,7 @@ class UserPostCampusList:  # 查询校区文章更新情况
         except:
             return output(111)
 
-        try:
+        if True:
             db = getDb()
             results = db.select('token', vars={'user_id': input.user_id, 'access_token': input.access_token},
                                 where="user_id=$user_id and access_token=$access_token")
@@ -156,5 +156,5 @@ class UserPostCampusList:  # 查询校区文章更新情况
                                 'post_count':post_count, 'is_more':is_more,
                                 'post_list':post_list})
 
-        except:
-            return output(700)
+        # except:
+        #     return output(700)
