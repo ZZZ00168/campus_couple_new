@@ -54,10 +54,6 @@ class UserPostCampusList:  # 查询校区文章更新情况
             post_list = []
             is_more = False
 
-	    if input.start_post_id == 0:
-	    	results = db.select('post', vars=
-
-
             # start_post_id_index = input.start_post_id - input.start_index
             # end_post_id_index = input.start_post_id - input.end_index-1
             post_id_number = input.post_count  + 1  # 为了判断是否又更多post而设计,如果还有post的话，则is_more=True
