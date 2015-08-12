@@ -17,13 +17,14 @@ from encrypt import *
 from verify import *
 
 
-@route.route('/user/post/campus/list')
+@route.route('/user/post/campus/l')
 class UserPostCampusList:  # 查询校区文章更新情况
     def POST(self):  # 传入access_token,user_id,start_poost_id,start_index,end_index
-        input = web.input(access_token=None, user_id=None, start_post_id=None, start_index=None, post_count=None, )
+        input = web.input(access_token=None, user_id=None, start_post_id=None, start_index=None, post_count=None)
 
         # 缺少必填参数
-        if input.access_token == None or input.user_id == None or input.start_post_id == None or input.start_index == None or input.post_count == None:
+        if (input.access_token == None or input.user_id == None or input.start_post_id == None or
+                    input.start_index == None or input.post_count == None):
             return output(110)
         try:
             input.user_id = int(input.user_id)
@@ -154,5 +155,6 @@ class UserPostCampusList:  # 查询校区文章更新情况
             return output(200, {'start_post_id':start_post_id, "start_index":0,
                                 'post_count':post_count, 'is_more':is_more,
                                 'post_list':post_list})
+
         except:
             return output(700)

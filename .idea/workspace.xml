@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="32a7a3c4-beba-4523-a93d-502df0f45d36" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/user/post/campus_list.py" afterPath="$PROJECT_DIR$/sites/user/post/campus_list.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql_scripts/table_post.sql" afterPath="$PROJECT_DIR$/sql_scripts/table_post.sql" />
     </list>
     <ignored path="campus_couple_new.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,8 +57,8 @@
       <file leaf-file-name="campus_list.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sites/user/post/campus_list.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8886311">
-              <caret line="154" column="61" selection-start-line="154" selection-start-column="61" selection-end-line="154" selection-end-column="61" />
+            <state vertical-scroll-proportion="0.22273782">
+              <caret line="22" column="112" selection-start-line="22" selection-start-column="112" selection-end-line="22" selection-end-column="112" />
               <folding />
             </state>
           </provider>
@@ -461,14 +460,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/sites/user/log_in_out.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -493,10 +484,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sites/user/log_in_out.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sites/user/post/campus_list.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8886311">
-          <caret line="154" column="61" selection-start-line="154" selection-start-column="61" selection-end-line="154" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.22273782">
+          <caret line="22" column="112" selection-start-line="22" selection-start-column="112" selection-end-line="22" selection-end-column="112" />
           <folding />
         </state>
       </provider>
