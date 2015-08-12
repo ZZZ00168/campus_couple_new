@@ -106,7 +106,8 @@ class UserPostCampusList:  # 查询校区文章更新情况
                                     limit = '0, 11')
 
                 for i in results:
-                    post_list.append({'user_id':i.user_id, 'post_id':i.post_id, 'add_time':i.add_time,
+                    post_list.append({'user_id':i.user_id, 'post_id':i.post_id,
+                                      'add_time':str(i.add_time),
                             'content':i.content, 'img_url':i.img_url,
                             'thumbnail_img_url':i.thumbnail_img_url})
                 post_count = len(post_list)
@@ -119,6 +120,8 @@ class UserPostCampusList:  # 查询校区文章更新情况
                     is_more = False
 
                 input.start_index = 0
+
+            print 'post list length: ' + str(len(post_list))
 
             for i in post_list:
                 results = db.select('userinfo', vars = {'id':i['user_id']},
