@@ -49,7 +49,7 @@ class UserPostCommentDelete:
 
         if input.user_id == user_id or input.user_id == result[0].user_id:
             try:
-                db.delete('comments', vars = {'id':input.comment_id}, what = "comment_id=$id")
+                db.delete('comments', vars = {'id':input.comment_id}, where = "comment_id=$id")
                 return output(200)
             except:
                 return output(700)
