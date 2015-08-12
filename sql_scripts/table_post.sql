@@ -21,7 +21,7 @@ create table comments(
 	user_id int not NULL ,#评论者的id
 	comment_id int PRIMARY KEY AUTO_INCREMENT,
 	commented_id int, #被评论的评论者id
-	content varchar(60),
+	content varchar(100),
 	add_time TIMESTAMP
 )engine=InnoDB default charset=utf8;
 
