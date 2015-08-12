@@ -41,33 +41,17 @@ class UserPostCommentDelete:
         if len(comment) == 0:
             return output(469)
 
-        if comment[0].user_id != input.user_id:
+        comment = comment[0]
+        user_id = comment.user_id
+        post_id = comment.post_id
+
+        result = db.select('post', vars = {'id':post_id}, where = "post_id=$id", what = "user_id")
+
+        if input.user_id == user_id or input.user_id == result[0].user_id:
+            try:
+                db.delete('comments', vars = {'id':input.comment_id}, what = "comment_id=$id")
+                return output(200)
+            except:
+                return output(700)
+        else:
             return output(410)
-
-        #顺便得出这条评论评论的 说说
-        post_id = comment[0].post_id
-
-        # 判断是 说说的主人 ， 还是评论的主人
-        identity = ""
-
-        result = db.select('post' , vars={'post_id':post_id} , where = "post_id=$post_id")
-        if len(result) == 0:
-            return output(11111)#todo 说说 不存在
-
-        result = db.select('comments' , vars={'comment_id':input.comment_id} , where = "comment_id=$comment_id")
-        if len(result) == 0:
-            return output(11111)#todo 评论 不存在
-
-        # 现在的result 是 评论 查询结果
-        if result[0].commenter_id == input.user_id:
-            identity = "comment_author"
-        else:
-            result = db.select('post' , vars = {'post_id':post_id} , where = "post_id=$post_id")
-            if result[0].user_id == input.user_id:
-                identity = "post_author"
-
-        if identity == "":
-            return output(420)#todo 用户权限不足无法删除
-        else:
-            db.delete("comments" , vars={'comment_id':input.comment_id} , where = "comment_id=$comment_id")
-        return output(200)

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32a7a3c4-beba-4523-a93d-502df0f45d36" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/user/post/comment_add.py" afterPath="$PROJECT_DIR$/sites/user/post/comment_add.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/user/post/comment_delete.py" afterPath="$PROJECT_DIR$/sites/user/post/comment_delete.py" />
     </list>
     <ignored path="campus_couple_new.iws" />
@@ -65,21 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="comment_delete.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="comment_delete.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sites/user/post/comment_delete.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="29" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="comment_add.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sites/user/post/comment_add.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.26450115">
-              <caret line="25" column="63" selection-start-line="25" selection-start-column="63" selection-end-line="25" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.6682135">
+              <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -115,8 +104,8 @@
       <list>
         <option value="$PROJECT_DIR$/sql_scripts/table_post.sql" />
         <option value="$PROJECT_DIR$/sites/user/post/campus_list.py" />
-        <option value="$PROJECT_DIR$/sites/user/post/comment_delete.py" />
         <option value="$PROJECT_DIR$/sites/user/post/comment_add.py" />
+        <option value="$PROJECT_DIR$/sites/user/post/comment_delete.py" />
       </list>
     </option>
   </component>
@@ -545,18 +534,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sites/user/post/comment_delete.py">
+    <entry file="file://$PROJECT_DIR$/sites/user/post/comment_add.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="29" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.3201856">
+          <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sites/user/post/comment_add.py">
+    <entry file="file://$PROJECT_DIR$/sites/user/post/comment_delete.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26450115">
-          <caret line="25" column="63" selection-start-line="25" selection-start-column="63" selection-end-line="25" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.6682135">
+          <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
           <folding />
         </state>
       </provider>
