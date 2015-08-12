@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32a7a3c4-beba-4523-a93d-502df0f45d36" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/user/post/comment_add.py" afterPath="$PROJECT_DIR$/sites/user/post/comment_add.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql_scripts/table_post.sql" afterPath="$PROJECT_DIR$/sql_scripts/table_post.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/user/post/campus_list.py" afterPath="$PROJECT_DIR$/sites/user/post/campus_list.py" />
     </list>
     <ignored path="campus_couple_new.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,21 +54,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="campus_list.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="campus_list.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sites/user/post/campus_list.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="73" column="32" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.5406032">
+              <caret line="135" column="20" selection-start-line="135" selection-start-column="20" selection-end-line="135" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="comment_add.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="comment_add.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sites/user/post/comment_add.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4037123">
-              <caret line="35" column="15" selection-start-line="35" selection-start-column="15" selection-end-line="35" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -103,9 +102,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/sites/user/post/campus_list.py" />
         <option value="$PROJECT_DIR$/sql_scripts/table_post.sql" />
         <option value="$PROJECT_DIR$/sites/user/post/comment_add.py" />
+        <option value="$PROJECT_DIR$/sites/user/post/campus_list.py" />
       </list>
     </option>
   </component>
@@ -526,18 +525,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sites/user/post/campus_list.py">
+    <entry file="file://$PROJECT_DIR$/sites/user/post/comment_add.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="32" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sites/user/post/comment_add.py">
+    <entry file="file://$PROJECT_DIR$/sites/user/post/campus_list.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4037123">
-          <caret line="35" column="15" selection-start-line="35" selection-start-column="15" selection-end-line="35" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.5406032">
+          <caret line="135" column="20" selection-start-line="135" selection-start-column="20" selection-end-line="135" selection-end-column="20" />
           <folding />
         </state>
       </provider>
