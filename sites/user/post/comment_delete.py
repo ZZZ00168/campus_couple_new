@@ -16,30 +16,34 @@ from database import *
 @route.route('/user/post/comment/delete')
 class UserPostCommentDelete:
     def POST(self):  # 传入 access_token,user_id,comment_id
-        db = getDb()
         input = web.input(access_token = None , user_id = None ,comment_id = None)
 
-        #x先看是不空值
         if input.access_token == None or input.user_id == None or input.comment_id == None:
-            return output(117)# todo 缺少必填参数
+            return output(110)
 
-        #强制转化类型
-        try :
+        try:
             input.user_id = int(input.user_id)
             input.comment_id = int(input.comment_id)
         except:
-            return output()#todo 类型错误
+            return output(111)
 
-        #再判断token 和 user_id 是否对应
-        result = db.select('token' , vars={'access_token':input.access_token , 'user_id':input.user_id} ,
+        db = getDb()
+
+        result = db.select('token' , vars = {'access_token':input.access_token ,
+                                           'user_id':input.user_id} ,
                            where = "user_id=$user_id and access_token=$access_token")
         if len(result) == 0:
-            return output(420)# todo 权限不足
+            return output(410)
 
         #判断是否存在这条评论
-        comment = db.select('comments' , vars={'comment_id':input.comment_id} , where = "comment_id=$comment_id")
+        comment = db.select('comments', vars={'comment_id':input.comment_id},
+                            where = "comment_id=$comment_id")
         if len(comment) == 0:
-            return output(1111111111)# todo 不存在对应评论
+            return output(469)
+
+        if comment[0].user_id != input.user_id:
+            return output(410)
+
         #顺便得出这条评论评论的 说说
         post_id = comment[0].post_id
 
@@ -67,5 +71,3 @@ class UserPostCommentDelete:
         else:
             db.delete("comments" , vars={'comment_id':input.comment_id} , where = "comment_id=$comment_id")
         return output(200)
-
-

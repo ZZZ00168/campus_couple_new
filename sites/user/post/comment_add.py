@@ -23,7 +23,7 @@ class UserPostCommentAdd:
         input = web.input(access_token = None, user_id = None, post_id = None,
                           comment_id = None, content = None)
 
-        if(input.access_token == None or input.user_id or
+        if(input.access_token == None or input.user_id == None or
                    input.post_id == None or input.content == None):
             return output(110)
 
