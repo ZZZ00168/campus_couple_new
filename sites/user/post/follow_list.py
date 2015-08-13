@@ -56,7 +56,8 @@ class UserPostFollowList:  # 获取关注用户的文章列表
             what += "post.thumbnail_img_url as thumbnail_img_url"
 
             if input.start_post_id == 0:
-                where = 'post.user_id=follow.followed_id and follow.user_id=$user_id'
+                where = '(post.user_id=follow.followed_id and follow.user_id=$user_id) or '
+                where += 'post.user_id=$user_id'
                 results = db.select('post,follow', vars = {'user_id':input.user_id},
                                     where = where,
                                     what = what,
@@ -80,8 +81,8 @@ class UserPostFollowList:  # 获取关注用户的文章列表
                 input.start_index = 0
 
             else:
-                where = 'post.post_id<=$id and post.user_id=follow.followed_id '
-                where += 'and follow.user_id=$user_id'
+                where = 'post.post_id<=$id and ((post.user_id=follow.followed_id '
+                where += 'and follow.user_id=$user_id) or post.user_id=$user_id)'
                 results = db.select('post,follow', vars = {'id':input.start_post_id,
                                                            'post_count':post_number,
                                                            'start_index':input.start_index,
