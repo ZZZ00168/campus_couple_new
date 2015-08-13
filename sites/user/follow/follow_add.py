@@ -40,6 +40,10 @@ class UserfollowedAdd:  # 关注用户
         if len(results) != 1:
             return output(410)
 
+        if len(db.select('follow', vars = {'user_id':input.user_id, 'followed_id':input.followed_id},
+                         where = "user_id=$user_id and followed_id=$followed_id")) > 0:
+            return output(200)
+
         try:
             db.insert('follow', user_id=input.user_id, followed_id=input.followed_id)
         except:
