@@ -39,7 +39,7 @@ class UserPostFollowUpdate:  # 查询关注用户的文章更新情况
 
 
         try:
-            where = 'post.post_id<=$id and post.user_id=follow.followed_id '
+            where = 'post.post_id>$id and post.user_id=follow.followed_id '
             where += 'and follow.user_id=$user_id'
             results = db.select('post,follow', vars = {'id':input.last_post_id,
                                                        'user_id':input.user_id},
