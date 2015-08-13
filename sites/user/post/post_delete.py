@@ -36,7 +36,7 @@ class UserPostDelete:
         if len(user) != 1:
             return output(410)  # 权限不足
 
-        results = db.select('post', vars = {'id':input.post_id}, where = 'post_id=$id')
+        results = db.select('post', vars = {'id':input.post_id}, where = 'post_id=$id',  what = 'user_id')
         if len(results) == 0:
             return output(467)
 
