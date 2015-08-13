@@ -41,78 +41,37 @@ class UserFollowList:  # 获取我关注用户列表
         # 获取全部的关注人
         results = db.select('follow', vars={'user_id': input.user_id}, where="user_id=$user_id")
         if len(results) == 0:
-            return output(200, [])  # todo 没有关注列表
+            return output(200, [])
 
-        list = []
+        follow_list = []
         try:
             for i in results:
-                followed_id = i.followed_id
-                userinfo = db.select('userinfo', vars={'user_id': followed_id}, where="user_id=$user_id")
-                # 在userinfo里面找不到对应的followed_id
-                if len(userinfo) == 0:
-                    continue
+                user_id = i.followed_id
+                user_name = None
+                user_img_url = None
+                description = ''
 
-                results_1 = db.select('userinfo', vars={'user_id': followed_id}, where="user_id=$user_id")
+                userinfos = db.select('userinfo', vars={'user_id': user_id}, where="user_id=$user_id")
 
-                user_nickname = ""
-                sex = ""
-                user_img_url = ""
-                description = ""
-
-                for j in results_1:
+                for j in userinfos:
                     if j.type == 'nickname':
-                        user_nickname = j.information
-                    if j.type == 'description':
-                        description = j.information
-                    if j.type == 'img_url':
+                        user_name = j.information
+                    elif j.type == 'img_url':
                         user_img_url = j.information
-                results_sex = db.select('user', vars={'user_id': followed_id}, where="user_id=$user_id", what="sex")
-                try:
-                    sex = str(results_sex[0].sex)
-                except:
+                    elif j.type == 'description':
+                        description = j.information
+
+                userinfos = db.select('user', vars = {'id':user_id}, where = "user_id=$id")[0]
+
+                if user_name == None:
+                    user_name = u'用户' + userinfos.mobile[-4:]
+
+                sex = userinfos.sex
+                if sex == None:
                     sex = 'm'
-                list.append({"user_id": followed_id, "user_name": user_nickname, "sex": sex,
+
+                follow_list.append({"user_id": user_id, "user_name": user_name, "sex": sex,
                              "user_img_url": user_img_url, "description": description})
-            return output(200, list)
+            return output(200, follow_list)
         except:
             return output(700)
-
-
-
-            # # TODO:需要简化
-            # # 对user_img_url做处理
-            # results = db.select('userinfo', vars={'user_id': followed_id, 'type': "img_url"},
-            #                     where="user_id=$user_id and type=$type")
-            # if len(results) == 0:
-            #     user_img_url = ""
-            # else:
-            #     user_img_url = results[0].information
-            #
-            # # 对user_name做处理
-            # results = db.select('userinfo', vars={'user_id': followed_id},
-            #                     where="user_id=$user_id and type='nickname'")
-            # if len(results) == 0:
-            #     user_nickname = ""
-            # else:
-            #     user_nickname = results[0].information
-            #
-            # # 对description做处理
-            # results = db.select('userinfo', vars={'user_id': followed_id},
-            #                     where="user_id=$user_id and type='description'")
-            # if len(results) == 0:
-            #     description = ""
-            # else:
-            #     description = results[0].information
-            #
-            # # 对sex做处理
-            # results = db.select('userinfo', vars={'user_id': followed_id},
-            #                     where="user_id=$user_id and type='sex'")
-            # if len(results) == 0:
-            #     sex = ""
-            # else:
-            #     sex = results[0].information
-            #
-            # list.append({"user_id": followed_id, "user_name": user_nickname, "sex": sex,
-            #              "user_img_url": user_img_url, "description": description})
-            # # for 结束
-            # return output(200, list)
