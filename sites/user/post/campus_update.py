@@ -30,7 +30,7 @@ class UserPostCampusUpdate:  # 查询校区文章更新情况
 
         db = getDb()
         results = db.select('token', vars = {'user_id': input.user_id, 'token':input.access_token},
-                               where="user_id=$user_id access_token=$token")
+                               where="user_id=$user_id and access_token=$token")
 
         if len(results) == 0:
             return output(410, False)
