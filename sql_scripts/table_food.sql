@@ -6,7 +6,7 @@ create table food(
 	campus_id int not null,
   food_price double not null,
   food_desc varchar(100),
-  food_img_url varchar(100),
+  food_img_url varchar(100) not null,
   is_sold_out enum('yes', 'no') not null,
   is_served enum('yes', 'no') not null
 )engine=InnoDB default charset=utf8;
