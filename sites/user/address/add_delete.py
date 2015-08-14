@@ -32,7 +32,6 @@ class UserAddressAdd:
 
         db = getDb()
 
-
         result = db.select('token', vars = {'token' : input.access_token , 'user_id' : input.user_id},
                            where = "access_token=$token and user_id=$user_id")
 
@@ -46,8 +45,9 @@ class UserAddressAdd:
             further_detail = ''
             if input.further_detail != None:
                 further_detail = input.further_detail
-            db.insert('address', user_id = input.user_id, region_id = input.region_id, phone = input.phone,
-                      consignee = input.consignee, further_detail = further_detail)
+            db.insert('address', user_id = input.user_id, region_id = input.region_id,
+                      phone = input.phone, consignee = input.consignee,
+                      further_detail = further_detail)
         except:
             return output(700)
 

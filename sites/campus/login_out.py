@@ -20,7 +20,7 @@ from database import *
 from output import *
 from encrypt import *
 
-
+@route.route('/campus/login')
 class CampusLogin:
     def POST(self):  # ，传入loginname，password，返回登陆正确的随机单一token值
         input = web.input(login_name=None, password=None)
