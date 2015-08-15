@@ -7,10 +7,20 @@ import os
 import os.path
 import base64
 import consts
+import Image
+import StringIO
 
 from database import *
 from output import *
 
+
+def getCropBox(w, h):
+    if w > h:
+        lpoint = ((w - h) / 2, 0)
+    else:
+        lpoint = (0, (h - w) / 2)
+    min_dist = min(w, h)
+    return (lpoint[0], lpoint[1], lpoint[0] + min_dist, lpoint[1] + min_dist)
 
 # update food message
 @route.route('/campus/food/setinfo')
@@ -66,9 +76,11 @@ class FoodSetInfo:
             filename = base64.b64encode(filename) + suffix
 
             #open the file and write data into it
-            fout = open('/var/campus_couple_img/static/' + filename, 'w')
-            fout.write(input.img_file.file.read())
-            fout.close()
+            im = Image.open(StringIO.StringIO(input.img_file.file.read()))
+            width, height = im.size
+            im = im.crop(getCropBox(width, height))
+            im.thumbnail((200, 200))
+            im.save('/var/campus_couple_img/static/' + filename)
 
             food_img_url = consts.domain_name + '/static/' + filename
 
