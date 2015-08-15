@@ -66,12 +66,13 @@ class FoodSetInfo:
             if os.path.exists(filename) == True:
                 os.remove(filename)
 
-            filename = input.img_file.filename.replace('\\', '/')
-            filename = filename.split('/')[-1]
-            i = filename.rfind('.')
-            if i == -1:
-                return output(440)
-            suffix = filename[i:]
+            # filename = input.img_file.filename.replace('\\', '/')
+            # filename = filename.split('/')[-1]
+            # i = filename.rfind('.')
+            # if i == -1:
+            #     return output(440)
+            # suffix = filename[i:]
+            suffix = '.jpg'
             filename = "logo image of food_id %d" % (input.food_id)
             filename = base64.b64encode(filename) + suffix
 
@@ -80,7 +81,7 @@ class FoodSetInfo:
             width, height = im.size
             im = im.crop(getCropBox(width, height))
             im.thumbnail((200, 200))
-            im.save('/var/campus_couple_img/static/' + filename)
+            im.save('/var/campus_couple_img/static/' + filename, 'jpg')
 
             food_img_url = consts.domain_name + '/static/' + filename
 

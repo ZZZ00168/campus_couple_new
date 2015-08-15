@@ -57,16 +57,16 @@ class FoodAdd:
                       food_price = input.food_price, food_desc = input.food_desc,
                       is_sold_out = 'no', is_served = 'no')
 
-            filename = input.img_file.filename.replace('\\', '/')
-            filename = filename.split('/')[-1]
-            i = filename.rfind('.')
-            if i == -1:
-                t.rollback()
-                return output(440)
-            suffix = filename[i:]
+            # filename = input.img_file.filename.replace('\\', '/')
+            # filename = filename.split('/')[-1]
+            # i = filename.rfind('.')
+            # if i == -1:
+            #     t.rollback()
+            #     return output(440)
+            # suffix = filename[i:]
+            suffix = '.jpg'
             filename = "logo image of food_id %d" % (food_id)
             filename = base64.b64encode(filename) + suffix
-
 
 
             #open the file and write data into it
@@ -74,7 +74,7 @@ class FoodAdd:
             width, height = im.size
             im = im.crop(getCropBox(width, height))
             im.thumbnail((200, 200))
-            im.save('/var/campus_couple_img/static/' + filename)
+            im.save('/var/campus_couple_img/static/' + filename, 'jpeg')
 
             food_img_url = consts.domain_name + '/static/' + filename
             db.update('food', vars = {'id' : food_id},
