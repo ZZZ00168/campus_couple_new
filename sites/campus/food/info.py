@@ -88,7 +88,7 @@ class FoodSetInfo:
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
 <body>
-    <form action="/campus/food/add" method="post" enctype="multipart/form-data">
+    <form action="/campus/food/setinfo" method="post" enctype="multipart/form-data">
         令牌: <input name="access_token" type="text"/><br/>
         ID: <input name="food_id" type="text"/><br/>
         名称: <input name="food_name" type="text"/><br/>
