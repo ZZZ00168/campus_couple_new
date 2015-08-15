@@ -97,8 +97,7 @@ class FoodAdd:
 @route.route('/campus/food/delete')
 class FoodDelete:
     def POST(self):
-
-        input = web.input(access_token = None,food_id = None)
+        input = web.input(access_token = None, food_id = None)
 
         if input.access_token == None or input.food_id == None:
             return  output(110)
@@ -125,7 +124,10 @@ class FoodDelete:
             return output(463)
 
         filename = results[0].food_img_url
-        filename = '/var/campus_couple_img/static/' + filename[filename.rfind('/') + 1:]
+        if filename == None:
+            filename = ''
+        else:
+            filename = '/var/campus_couple_img/static/' + filename[filename.rfind('/') + 1:]
 
         try:
             if os.path.exists(filename) == True:
