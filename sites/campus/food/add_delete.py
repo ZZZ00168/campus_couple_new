@@ -56,7 +56,7 @@ class FoodAdd:
             fout.write(input.img_file.file.read())
             fout.close()
 
-            food_img_url = consts + '/static/' + filename
+            food_img_url = consts.domain_name + '/static/' + filename
             db.update('food', vars = {'id' : food_id},
                       where = "food_id=$id", food_img_url = food_img_url)
             t.commit()
