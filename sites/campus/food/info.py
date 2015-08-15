@@ -3,6 +3,11 @@
 
 import route
 import web
+import os
+import os.path
+import base64
+import consts
+
 from database import *
 from output import *
 
@@ -34,16 +39,47 @@ class FoodSetInfo:
 
         campus_id = results[0].campus_id
 
-        if len(db.select('food', vars = {'fid' : input.food_id, 'cid' : campus_id},
-                         where = "food_id=$fid and campus_id=$cid")) == 0:
+        results = db.select('food', vars = {'fid' : input.food_id, 'cid' : campus_id},
+                         where = "food_id=$fid and campus_id=$cid")
+        if len(results) == 0:
             return output(463)
 
+        filename = results[0].food_img_url
+        if filename == None:
+            filename = ''
+        else:
+            filename = '/var/campus_couple_img/static/' + filename[filename.rfind('/') + 1:]
+
         try:
+            if os.path.exists(filename) == True:
+                os.remove(filename)
+
+            filename = input.img_file.filename.replace('\\', '/')
+            filename = filename.split('/')[-1]
+            i = filename.rfind('.')
+            if i == -1:
+                return output(440)
+            suffix = filename[i:]
+            filename = "logo image of food_id %d" % (input.food_id)
+            filename = base64.b64encode(filename) + suffix
+
+            #open the file and write data into it
+            fout = open('/var/campus_couple_img/static/' + filename, 'w')
+            fout.write(input.img_file.file.read())
+            fout.close()
+
+            food_img_url = consts.domain_name + '/static/' + filename
+            db.update('food', vars = {'id' : input.food_id},
+                      where = "food_id=$id", food_img_url = food_img_url)
+
             db.update('food', vars = {'id' : input.food_id}, where = "food_id=$id",
                       food_name = input.food_name, food_desc = input.food_desc,
                       food_price = input.food_price)
         except:
+            if os.path.exists(filename) == True:
+                os.remove(filename)
             return output(700)
+
         return output(200)
 
 
