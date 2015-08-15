@@ -64,7 +64,7 @@ class FoodAdd:
 
 
         except:
-            t.rolloback()
+            t.rollback()
             return output(440)
 
     def GET(self):
