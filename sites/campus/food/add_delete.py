@@ -48,11 +48,11 @@ class FoodAdd:
 </head>
 <body>
     <form action="/campus/food/add" method="post" enctype="multipart/form-data">
-        access_token: <input name="access_token" type="text"/><br/>
-        food_name: &nbsp;&nbsp;&nbsp;<input name="food_name" type="text"/><br/>
-        food_price: &nbsp;&nbsp;<input name="food_price" type="text"/><br/>
-        food_desc: &nbsp;&nbsp;&nbsp;<input name="food_desc" type="text"/><br/>
-        <input type="submit" value="submit"/>
+        令牌: <input name="access_token" type="text"/><br/>
+        名称: &nbsp;&nbsp;&nbsp;<input name="food_name" type="text"/><br/>
+        价格: &nbsp;&nbsp;<input name="food_price" type="text"/><br/>
+        描述: &nbsp;&nbsp;&nbsp;<input name="food_desc" type="text"/><br/>
+        <input type="submit" value="提交"/>
     </form>
 </body>
 </html>
