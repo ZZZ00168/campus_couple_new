@@ -100,6 +100,7 @@ class FoodSetInfo:
 </body>
 </html>
 """
+        return html_text
 
 
 @route.route('/campus/food/setstatus')
