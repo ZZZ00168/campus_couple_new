@@ -26,6 +26,8 @@ class FoodSetInfo:
         try:
             input.food_id = int(input.food_id)
             input.food_price = float(input.food_price)
+            if not (input.food_price > 0 and input.food_price <= 500):
+                return output(111)
         except:
             return output(111)
 
@@ -69,12 +71,10 @@ class FoodSetInfo:
             fout.close()
 
             food_img_url = consts.domain_name + '/static/' + filename
-            db.update('food', vars = {'id' : input.food_id},
-                      where = "food_id=$id", food_img_url = food_img_url)
 
             db.update('food', vars = {'id' : input.food_id}, where = "food_id=$id",
                       food_name = input.food_name, food_desc = input.food_desc,
-                      food_price = input.food_price)
+                      food_price = input.food_price, food_img_url = food_img_url)
         except:
             if os.path.exists(filename) == True:
                 os.remove(filename)

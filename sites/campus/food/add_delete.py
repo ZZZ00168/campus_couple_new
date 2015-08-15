@@ -26,6 +26,8 @@ class FoodAdd:
 
         try:
             input.food_price = float(input.food_price)
+            if not (input.food_price > 0 and input.food_price <= 500):
+                return output(111)
         except:
             return output(111)
 
