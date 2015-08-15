@@ -18,7 +18,7 @@ from database import *
 class UserImageUpload:
     def POST(self):
 		input = web.input(access_token = None, user_id = None, img_file = {})
-		if input.access_token == None or input.user_id == None or input.img_file == None:
+		if input.access_token == None or input.user_id == None or input.img_file == {}:
 			return output(110)
 
 		try:
