@@ -7,6 +7,8 @@ import route
 import web
 import base64
 import consts
+import os
+import os.path
 
 from database import *
 from output import *
@@ -35,6 +37,7 @@ class FoodAdd:
 
         campus_id = results[0].campus_id
 
+        filename = ""
         t = db.transaction()
         try:
             food_id = db.insert('food' , campus_id = campus_id, food_name = input.food_name,
@@ -62,8 +65,12 @@ class FoodAdd:
             t.commit()
             return output(200)
 
-
         except:
+            try:
+                if os.path.exists(filename) == True:
+                    os.remove(filename)
+            except:
+                pass
             t.rollback()
             return output(440)
 
@@ -111,11 +118,18 @@ class FoodDelete:
 
         campus_id = results[0].campus_id
 
-        if len(db.select('food', vars = {'fid' : input.food_id, 'cid' : campus_id},
-                         where = "food_id=$fid and campus_id=$cid")) == 0:
+        results = db.select('food', vars = {'fid' : input.food_id, 'cid' : campus_id},
+                         where = "food_id=$fid and campus_id=$cid")
+
+        if len(results) == 0:
             return output(463)
 
+        filename = results[0].food_img_url
+        filename = '/var/campus_couple_img/static/' + filename[filename.rfind('/') + 1:]
+
         try:
+            if os.path.exists(filename) == True:
+                os.remove(filename)
             db.delete('food' ,vars={'fid':input.food_id} , where = "food_id=$fid")
             return output(200)
         except:
