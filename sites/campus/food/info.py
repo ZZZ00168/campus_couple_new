@@ -82,6 +82,25 @@ class FoodSetInfo:
 
         return output(200)
 
+    def GET(self):
+        html_text = """<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
+    <form action="/campus/food/add" method="post" enctype="multipart/form-data">
+        令牌: <input name="access_token" type="text"/><br/>
+        ID: <input name="food_id" type="text"/><br/>
+        名称: <input name="food_name" type="text"/><br/>
+        价格: <input name="food_price" type="text"/><br/>
+        描述: <input name="food_desc" type="text"/><br/>
+        图片: <input name="img_file" type="file"/><br/>
+        <input type="submit" value="提交"/>
+    </form>
+</body>
+</html>
+"""
+
 
 @route.route('/campus/food/setstatus')
 class FoodSetStatus:
