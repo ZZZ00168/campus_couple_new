@@ -12,10 +12,10 @@ from output import *
 class FoodSetInfo:
     def POST(self):
         input = web.input(access_token = None, food_id = None, food_name = None,
-                          food_desc = None, food_price = None)
+                          food_desc = None, food_price = None, img_file = {})
 
         if (input.access_token == None or input.food_id == None or input.food_name == None
-            or input.food_desc == None or input.food_price == None):
+            or input.food_desc == None or input.food_price == None or input.img_file == {}):
             return output(110)
 
         try:

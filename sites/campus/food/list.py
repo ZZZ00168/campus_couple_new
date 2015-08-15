@@ -50,7 +50,6 @@ class FoodList:
             results = db.select('food', vars={'food_id': input.food_id, 'campus_id': input.campus_id},
                             where="food_id=$food_id and campus_id=$campus_id")
             if len(results) == 0:
-
                 return output(463)
 
         resul = []
