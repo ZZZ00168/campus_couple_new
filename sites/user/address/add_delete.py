@@ -54,13 +54,10 @@ class UserAddressAdd:
         return output(200)
 
 
-
-
 @route.route('/user/address/delete')
 class UserAddressDelete:
     def POST(self):
-        db = getDb()
-        input  = web.input(access_token = None ,user_id = None , address_id = None)
+        input  = web.input(access_token = None, user_id = None, address_id = None)
 
         if input.access_token == None or input.user_id == None or input.address_id == None:
             return output(110)
@@ -71,6 +68,7 @@ class UserAddressDelete:
         except:
             return output(111)
 
+        db = getDb()
         result = db.select('token' , vars = {'token':input.access_token , 'user_id':input.user_id} ,
                            where = "access_token=$token and user_id=$user_id ")
 
