@@ -45,7 +45,10 @@ class GetUserInfo:
 
         info['mobile'] = user.mobile
         info['sex'] = user.sex
-        info['default_address_id'] = user.default_address_id
+        if user.default_address_id == None:
+            info['default_address_id'] = 0
+        else:
+            info['default_address_id'] = user.default_address_id
         if user.campus_id != None:
             results = db.select('campus', vars={'id': user.campus_id},
                                 where="campus_id=$id")[0]
