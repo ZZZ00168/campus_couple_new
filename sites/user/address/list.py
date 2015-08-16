@@ -29,7 +29,8 @@ class UserAddressList:
 
         try:
             input.user_id = int(input.user_id)
-            input.address_id = int(input.address_id)
+            if input.address_id != None:
+                input.address_id = int(input.address_id)
         except:
             return output(111)
 

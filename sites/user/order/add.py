@@ -11,24 +11,28 @@ from database import *
 @route.route('/user/order/submit')
 class UserOrderSubmit:
     def POST(self):
-        input = web.input(access_token = '' , user_id = '' , food_list = None , address_id = '')
+        input = web.input(access_token = None, user_id = None, food_list = None , address_id = None)
+        if (input.access_token == None or input.user_id == None or input.food_list == None or
+            input.address_id == None):
+            return output(110)
 
         try:
             input.user_id = int(input.user_id)
+            input.address_id = int(input.address_id)
         except:
-            #TODO:user_id is not an integer
-            return output(700)
+            return output(111)
 
         db = getDb()
-        user_id = db.select('token' , vars={'access_token':input.access_token , 'user_id' : input.user_id} ,
+        user_id = db.select('token' , vars={'access_token':input.access_token ,
+                                            'user_id' : input.user_id} ,
                          where = "access_token=$access_token and user_id=$user_id")
 
         if len(user_id) == 0:
-            return output(420) #todo 权限不足
+            return output(420)
 
         user_id = user_id[0].user_id
 
-        campus_id =db.select('user' , vars = {'user_id':user_id} , where = "user_id=$user_id")[0].campus_id
+        campus_id = db.select('user' , vars = {'user_id':user_id} , where = "user_id=$user_id")[0].campus_id
 
         t = db.transaction()
         try:
@@ -43,4 +47,3 @@ class UserOrderSubmit:
         else :
             t.commit()
             return output(200)
-
