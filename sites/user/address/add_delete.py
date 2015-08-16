@@ -41,14 +41,26 @@ class UserAddressAdd:
         if len(db.select('region', vars = {'id' : input.region_id}, where = "region_id=$id")) == 0:
             return output(464)
 
+        default_address_id = db.select('user', vars = {'id':input.user_id}, where = "user_id=$id",
+                                       what = "default_address_id")[0].default_address_id
+        if default_address_id == None:
+            default_address_id = 0
+
+        t = db.transaction()
         try:
             further_detail = ''
             if input.further_detail != None:
                 further_detail = input.further_detail
-            db.insert('address', user_id = input.user_id, region_id = input.region_id,
+            address_id = db.insert('address', user_id = input.user_id, region_id = input.region_id,
                       phone = input.phone, consignee = input.consignee,
                       further_detail = further_detail)
+
+            if default_address_id == 0:
+                db.update('user', vars = {'id':input.user_id}, where = "user_id=$id",
+                          default_address_id = address_id)
+            t.commit()
         except:
+            t.rollback()
             return output(700)
 
         return output(200)
@@ -81,9 +93,25 @@ class UserAddressDelete:
         if len(results) == 0:
             return output(465)
 
+        default_address_id = db.select('user', vars = {'id':input.user_id}, where = "user_id=$id",
+                                       what = "default_address_id")[0].default_address_id
+        if default_address_id == None:
+            default_address_id = 0
+
+        t = db.transaction()
         try:
             db.delete('address', vars = {'id' : input.address_id}, where = "address_id=$id")
+            address_list = db.select('address', vars = {'id' : input.user_id}, where = "user_id=$id")
+            if len(address_list) == 0:
+                new_default_address_id = 0
+            else:
+                new_default_address_id = address_list[0].address_id
+
+            db.update('user', vars = {'id' : input.user_id}, where = "user_id=$id",
+                      default_address_id = new_default_address_id)
+            t.commit()
         except:
+            t.rollback()
             return output(700)
 
         return output(200)
