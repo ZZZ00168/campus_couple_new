@@ -17,7 +17,6 @@ from database import *
 
 @route.route('/user/post/comment/add')
 class UserPostCommentAdd:
-
     def POST(self):  # 传入 access_token,user_id,post_id,commenter_id,comment
 
         input = web.input(access_token = None, user_id = None, post_id = None,
