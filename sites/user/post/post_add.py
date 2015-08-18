@@ -75,7 +75,9 @@ class UserPostAdd:
             if img_url != None and thumbnail_img_url != None:
                 db.update('post', vars = {'id':post_id}, where = "post_id=$id",
                           img_url = img_url, thumbnail_img_url = thumbnail_img_url)
+                t.commit()
         except:
+            t.rollback()
             return output(700)
         return output(200)
 
