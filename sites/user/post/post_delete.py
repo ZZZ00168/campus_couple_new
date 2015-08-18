@@ -9,6 +9,9 @@ apis:
 
 import route
 import re
+import os
+import os.path
+
 from database import *
 from output import *
 from encrypt import *
@@ -36,12 +39,26 @@ class UserPostDelete:
         if len(user) != 1:
             return output(410)  # 权限不足
 
-        results = db.select('post', vars = {'id':input.post_id}, where = 'post_id=$id',  what = 'user_id')
+        results = db.select('post', vars = {'id':input.post_id}, where = 'post_id=$id')
         if len(results) == 0:
             return output(467)
+        results = results[0]
 
-        if results[0].user_id != input.user_id:
+        if results.user_id != input.user_id:
             return output(410)
+
+        original_filename = results.img_url
+        thumbnail_filename = results.thumbnail_img_url
+        if original_filename == None:
+            original_filename = ''
+        else:
+            original_filename = ('/var/campus_couple_img/static/' +
+                                original_filename[original_filename.rfind('/') + 1:])
+        if thumbnail_filename == None:
+            thumbnail_filename = ''
+        else:
+            thumbnail_filename = ('/var/campus_couple_img/static/' +
+                                thumbnail_filename[thumbnail_filename.rfind('/') + 1:])
 
         t = db.transaction()
         try:
@@ -51,6 +68,11 @@ class UserPostDelete:
             db.delete('comments', vars={'post_id': input.post_id}, where="post_id=$post_id")
             # 删掉该post
             db.delete('post', vars={'post_id': input.post_id}, where="post_id=$post_id")
+
+            if os.path.exists(original_filename) == True:
+                os.remove(original_filename)
+            if os.path.exists(thumbnail_filename) == True:
+                os.remove(thumbnail_filename)
         except:
             t.rollback()
             return output(700)
