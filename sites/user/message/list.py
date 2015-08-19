@@ -43,7 +43,7 @@ class UserMessageList:  # 关注用户
                                  'add_time':str(message.add_time)})
 
         try:
-            db.delete('messages', vars = {'id':input.user_id}, where = "receiver_id=id")
+            db.delete('messages', vars = {'id':input.user_id}, where = "receiver_id=$id")
         except:
             return output(700)
         return output(200, message_list)

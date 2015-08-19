@@ -39,7 +39,7 @@ class UserMessageSend:  # 关注用户
             return output(468)
 
         try:
-            db.insert('messages', sender_i = input.user_id, receiver_id = input.receiver_id,
+            db.insert('messages', sender_id = input.user_id, receiver_id = input.receiver_id,
                       content = input.content, add_time = None)
         except:
             return output(700)
