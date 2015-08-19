@@ -30,4 +30,3 @@ create table follow(
 	user_id int not null,
 	followed_id int not null
 )engine=InnoDB default charset=utf8;
-
