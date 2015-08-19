@@ -35,7 +35,7 @@ class UserMessageList:  # 关注用户
         message_list = []
 
         results = db.select('messages', vars = {'id':input.user_id},
-                            where = "receiver_id=id",
+                            where = "receiver_id=$id",
                             what = "sender_id,content,add_time")
         for message in results:
             message_list.append({'sender_id':message.sender_id,

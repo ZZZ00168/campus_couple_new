@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="32a7a3c4-beba-4523-a93d-502df0f45d36" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/user/message/list.py" afterPath="$PROJECT_DIR$/sites/user/message/list.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/user/message/send.py" afterPath="$PROJECT_DIR$/sites/user/message/send.py" />
-    </list>
+    <list default="true" id="32a7a3c4-beba-4523-a93d-502df0f45d36" name="Default" comment="" />
     <ignored path="campus_couple_new.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -28,20 +25,8 @@
       <file leaf-file-name="list.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sites/user/message/list.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5011601">
-              <caret line="36" column="54" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="54" />
-              <folding>
-                <element signature="e#109#121#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="send.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sites/user/message/send.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.5150812">
+              <caret line="37" column="50" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
               <folding>
                 <element signature="e#109#121#0" expanded="true" />
               </folding>
@@ -894,8 +879,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/user/message/send.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.47331786">
+          <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
           <folding>
             <element signature="e#109#121#0" expanded="true" />
           </folding>
@@ -904,8 +889,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/user/message/list.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5011601">
-          <caret line="36" column="54" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.5150812">
+          <caret line="37" column="50" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
           <folding>
             <element signature="e#109#121#0" expanded="true" />
           </folding>
