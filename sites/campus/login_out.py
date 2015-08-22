@@ -76,7 +76,7 @@ class CampusLogin:
 
                 db.insert('campus_token', access_token=token, campus_id=campus_id,
                           activate_time=None)
-                return output(200, {"access_token": token})
+                return output(200, {"access_token": token, 'campus_id':campus_id})
             except:
                 return output(700)
 
