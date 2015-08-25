@@ -81,7 +81,7 @@ class FoodSetInfo:
             width, height = im.size
             im = im.crop(getCropBox(width, height))
             im.thumbnail((200, 200))
-            im.save('/var/campus_couple_img/static/' + filename, 'jpg')
+            im.save('/var/campus_couple_img/static/' + filename, 'jpeg')
 
             food_img_url = consts.domain_name + '/static/' + filename
 
