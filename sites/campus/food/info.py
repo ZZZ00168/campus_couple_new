@@ -62,7 +62,7 @@ class FoodSetInfo:
         else:
             filename = '/var/campus_couple_img/static/' + filename[filename.rfind('/') + 1:]
 
-        try:
+        # try:
             if os.path.exists(filename) == True:
                 os.remove(filename)
 
@@ -88,10 +88,10 @@ class FoodSetInfo:
             db.update('food', vars = {'id' : input.food_id}, where = "food_id=$id",
                       food_name = input.food_name, food_desc = input.food_desc,
                       food_price = input.food_price, food_img_url = food_img_url)
-        except:
-            if os.path.exists(filename) == True:
-                os.remove(filename)
-            return output(700)
+        # except:
+        #     if os.path.exists(filename) == True:
+        #         os.remove(filename)
+        #     return output(700)
 
         return output(200)
 
