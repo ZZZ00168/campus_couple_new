@@ -31,7 +31,9 @@ class UserPostCampusList:  # 查询校区文章更新情况
             input.start_post_id = int(input.start_post_id)
             input.start_index = int(input.start_index)
             input.post_count = int(input.post_count)
-            if input.start_index < 0 or input.post_count <= 0 or input.start_post_id < 0:  # 参数值非法
+
+            # 参数值非法
+            if input.start_index < 0 or input.post_count <= 0 or input.start_post_id < 0:
                 return output(112)
         except:
             return output(111)
@@ -107,10 +109,13 @@ class UserPostCampusList:  # 查询校区文章更新情况
                                     limit = '0, 11')
 
                 for i in results:
+                    thumbnail_img_url = i.thumbnail_img_url
+                    if thumbnail_img_url == 'null':
+                        thumbnail_img_url = None
                     post_list.append({'user_id':i.user_id, 'post_id':i.post_id,
                                       'add_time':str(i.add_time),
                             'content':i.content, 'img_url':i.img_url,
-                            'thumbnail_img_url':i.thumbnail_img_url})
+                            'thumbnail_img_url':thumbnail_img_url})
                 post_count = len(post_list)
 
                 if post_count == 11:

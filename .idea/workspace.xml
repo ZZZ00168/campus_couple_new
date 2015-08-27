@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32a7a3c4-beba-4523-a93d-502df0f45d36" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/campus/food/info.py" afterPath="$PROJECT_DIR$/sites/campus/food/info.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/user/post/campus_list.py" afterPath="$PROJECT_DIR$/sites/user/post/campus_list.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/user/post/follow_list.py" afterPath="$PROJECT_DIR$/sites/user/post/follow_list.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="campus_couple_new.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,21 +26,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="add_delete.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sites/campus/food/add_delete.py">
+      <file leaf-file-name="campus_list.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sites/user/post/campus_list.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="54" column="12" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+              <caret line="113" column="28" selection-start-line="113" selection-start-column="28" selection-end-line="113" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="info.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sites/campus/food/info.py">
+      <file leaf-file-name="follow_list.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sites/user/post/follow_list.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.65429235">
-              <caret line="93" column="30" selection-start-line="90" selection-start-column="8" selection-end-line="93" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.512761">
+              <caret line="72" column="48" selection-start-line="72" selection-start-column="48" selection-end-line="72" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -67,8 +69,6 @@
         <option value="$PROJECT_DIR$/sites/user/follow/follow_list.py" />
         <option value="$PROJECT_DIR$/sites/user/post/campus_update.py" />
         <option value="$PROJECT_DIR$/sites/user/post/follow_update.py" />
-        <option value="$PROJECT_DIR$/sites/user/post/follow_list.py" />
-        <option value="$PROJECT_DIR$/sites/user/post/campus_list.py" />
         <option value="$PROJECT_DIR$/sql_scripts/table_food.sql" />
         <option value="$PROJECT_DIR$/sites/user/upload.py" />
         <option value="$PROJECT_DIR$/consts.py" />
@@ -91,6 +91,8 @@
         <option value="$PROJECT_DIR$/sites/campus/login_out.py" />
         <option value="$PROJECT_DIR$/sites/campus/food/add_delete.py" />
         <option value="$PROJECT_DIR$/sites/campus/food/info.py" />
+        <option value="$PROJECT_DIR$/sites/user/post/campus_list.py" />
+        <option value="$PROJECT_DIR$/sites/user/post/follow_list.py" />
       </list>
     </option>
   </component>
@@ -130,8 +132,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -599,23 +601,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sql_scripts/table_token.sql">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26799008">
           <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sql_scripts/table_school.sql">
       <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql_scripts/table_school.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.928572">
           <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/consts.py">
@@ -692,13 +694,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13921113">
           <caret line="10" column="20" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/user/post/follow_list.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7911833">
-          <caret line="92" column="38" selection-start-line="92" selection-start-column="38" selection-end-line="92" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -864,34 +859,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sites/user/post/campus_update.py">
+    <entry file="file://$PROJECT_DIR$/sites/campus/food/info.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33410674">
-          <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sites/user/post/campus_list.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7795824">
-          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.65429235">
+          <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/campus/food/add_delete.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.23433875">
           <caret line="54" column="12" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sites/user/post/campus_update.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68213457">
+          <caret line="53" column="28" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sites/user/post/campus_list.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="113" column="28" selection-start-line="113" selection-start-column="28" selection-end-line="113" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sites/campus/food/info.py">
+    <entry file="file://$PROJECT_DIR$/sites/user/post/follow_list.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65429235">
-          <caret line="93" column="30" selection-start-line="90" selection-start-column="8" selection-end-line="93" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.512761">
+          <caret line="72" column="48" selection-start-line="72" selection-start-column="48" selection-end-line="72" selection-end-column="48" />
           <folding />
         </state>
       </provider>

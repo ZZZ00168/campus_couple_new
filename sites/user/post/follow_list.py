@@ -64,10 +64,13 @@ class UserPostFollowList:  # 获取关注用户的文章列表
                                     order = "post_id desc",
                                     limit = "0,11")
                 for i in results:
+                    thumbnail_img_url = i.thumbnail_img_url
+                    if thumbnail_img_url == 'null':
+                        thumbnail_img_url = None
                     post_list.append({'user_id':i.user_id, 'post_id':i.post_id,
                                       'add_time':str(i.add_time),
                             'content':i.content, 'img_url':i.img_url,
-                            'thumbnail_img_url':i.thumbnail_img_url})
+                            'thumbnail_img_url':thumbnail_img_url})
 
                 post_count = len(post_list)
 
