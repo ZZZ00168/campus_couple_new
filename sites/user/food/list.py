@@ -43,13 +43,13 @@ class FoodList:
         campus_id = db.select('user', vars = {'id':input.user_id}, where = "user_id=$id")[0].campus_id
 
         # 查看campus_id 是否存在
-        results = db.select('campus', vars={'campus_id' : input.campus_id},
+        results = db.select('campus', vars={'campus_id' :campus_id},
                             where="campus_id=$campus_id", what="campus_id")
 
         if len(results) != 1:
             return output(460)
 
-        results = db.select('food', vars={'campus_id': input.campus_id},
+        results = db.select('food', vars={'campus_id': campus_id},
                                 where="campus_id=$campus_id")
 
         resul = []
