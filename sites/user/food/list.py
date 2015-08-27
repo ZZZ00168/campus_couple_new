@@ -24,7 +24,6 @@ from encrypt import *
 class FoodList:
     def POST(self):
         input = web.input(access_token = None, user_id = None)
-        input = web.input(campus_id = None, food_id = None)
 
         if input.access_token == None or input.user_id == None:
             return output(110)
@@ -33,18 +32,6 @@ class FoodList:
             input.user_id = int(input.user_id)
         except:
             return output(111)
-
-
-
-        if input.campus_id == None:
-            return output(110)
-
-        try:
-            input.campus_id = int(input.campus_id)
-            if input.food_id != None:
-                input.food_id = int(input.food_id)
-        except:
-            output(111)
 
         db = getDb()
 
