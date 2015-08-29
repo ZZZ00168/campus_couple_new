@@ -54,8 +54,15 @@ class FoodList:
 
         resul = []
         for i in results:
+            is_served = True
+            if i.is_served == 'no':
+                is_served = False
+
+            is_sold_out = True
+            if i.is_sold_out == 'no':
+                is_sold_out = False
             resul.append(
                 {"id": i.food_id, "name": i.food_name, "price": i.food_price,
-                 "desc": i.food_desc, "img_url": i.food_img_url, "is_sold_out": i.is_sold_out,
-                 "is_server": i.is_served})
+                 "desc": i.food_desc, "img_url": i.food_img_url, "is_sold_out": is_sold_out,
+                 "is_served": is_served})
         return output(200, resul)
