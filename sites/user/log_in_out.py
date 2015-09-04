@@ -49,8 +49,7 @@ class UserLogin:
         else:
             try:
                 while True:
-                    token = encrypt(str(random.randint(100000, 1000000)) +
-                                str(time.time()) + input.mobile)
+                    token = encrypt(str(random.randint(100000, 1000000)) + str(time.time()) + input.mobile)
                     results = db.select('token', vars = {'token' : token},
                               where = "access_token=$token")
                     if len(results) == 0:
