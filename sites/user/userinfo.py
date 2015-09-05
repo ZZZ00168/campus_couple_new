@@ -21,7 +21,7 @@ from mytoken import *
 class GetUserInfo:
     # 这里的schoolname还没有实现。因为可能shool_id 有改动#
     def POST(self):
-        input = web.input(access_token=None, user_id=None)
+        input = web.input(user_id=None)
 
         if input.access_token == None or input.user_id == None:
             return output(110)
@@ -33,11 +33,6 @@ class GetUserInfo:
 
         db = getDb()
 
-        result = db.select('token', vars={'token': input.access_token, 'user_id': input.user_id},
-                           where="access_token=$token and user_id=$user_id ")
-
-        if len(result) != 1:
-            return output(410)
         user_id = input.user_id
 
         info = {}
