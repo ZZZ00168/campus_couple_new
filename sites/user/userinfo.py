@@ -23,7 +23,7 @@ class GetUserInfo:
     def POST(self):
         input = web.input(user_id=None)
 
-        if input.access_token == None or input.user_id == None:
+        if input.user_id == None:
             return output(110)
 
         try:
