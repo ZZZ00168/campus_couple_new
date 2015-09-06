@@ -113,7 +113,7 @@ class UserPostFollowList:  # 获取关注用户的文章列表
 
 
             for i in post_list:
-                results = db.select('favor', vars = {'user_id':i['user_id'], 'post_id':i['post_id']},
+                results = db.select('favor', vars = {'user_id': input.user_id, 'post_id':i['post_id']},
                                     where = "post_id=$post_id and user_id=$user_id")
                 if len(results) == 0:
                     i['is_favored'] = False
